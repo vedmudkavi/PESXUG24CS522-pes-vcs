@@ -137,27 +137,34 @@ int index_status(const Index *index) {
 
 int index_load(Index *index) {
     index->count = 0;
-    
+
     FILE *fp = fopen(".pes/index", "r");
     if (!fp) {
         return 0; // Fresh repo, return success with empty index
     }
 
-    char hash_str[65];
-    // Read formatted lines: mode hash mtime size path
-    // Note: Adjust the format string if your index format differs
-    while (fscanf(fp, "%o %64s %ld %zu %s",
-                  &index->entries[index->count].mode,
-                  hash_str,
-                  &index->entries[index->count].mtime_sec,
-                  &index->entries[index->count].size,
-                  index->entries[index->count].path) == 5) {
-        
-        // Convert the string hash back to the struct
+    char line[1024];
+    while (fgets(line, sizeof(line), fp) != NULL) {
+        unsigned int mode = 0;
+        char hash_str[65] = {0};
+        unsigned long long mtime = 0;
+        unsigned int size = 0;
+        char path[512] = {0};
+
+        // Expect: mode hash mtime size path
+        int items = sscanf(line, "%o %64s %llu %u %511s", &mode, hash_str, &mtime, &size, path);
+        if (items != 5) continue; // skip malformed lines
+
+        index->entries[index->count].mode = mode;
         hex_to_hash(hash_str, &index->entries[index->count].hash);
+        index->entries[index->count].mtime_sec = (uint64_t)mtime;
+        index->entries[index->count].size = (uint32_t)size;
+        strncpy(index->entries[index->count].path, path, sizeof(index->entries[index->count].path) - 1);
+        index->entries[index->count].path[sizeof(index->entries[index->count].path) - 1] = '\0';
         index->count++;
+        if (index->count >= MAX_INDEX_ENTRIES) break;
     }
-    
+
     fclose(fp);
     return 0;
 }
@@ -180,7 +187,13 @@ int index_save(const Index *index) {
     for (int i = 0; i < index->count; i++) {
         char hash_str[65];
         hash_to_hex(&index->entries[i].hash, hash_str);
-        fprintf(fp, "%s %s\n", hash_str, index->entries[i].path);
+        // Write: mode hash mtime size path
+        fprintf(fp, "%o %s %llu %u %s\n",
+                index->entries[i].mode,
+                hash_str,
+                (unsigned long long)index->entries[i].mtime_sec,
+                (unsigned int)index->entries[i].size,
+                index->entries[i].path);
     }
 
     // 4. Flush and sync to disk
@@ -222,7 +235,7 @@ int index_add(Index *index, const char *path) {
             index->entries[i].hash = hash;
             index->entries[i].mtime_sec = st.st_mtime;
             index->entries[i].size = st.st_size;
-            return 0;
+            return index_save(index);
         }
     }
 
@@ -237,5 +250,5 @@ int index_add(Index *index, const char *path) {
     strncpy(e->path, path, 511);
     index->count++;
 
-    return 0;
+    return index_save(index);
 }
