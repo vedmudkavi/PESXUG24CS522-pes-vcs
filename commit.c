@@ -193,9 +193,39 @@ int head_update(const ObjectID *new_commit) {
 //   - head_update       : moves the branch pointer to your new commit
 //
 // Returns 0 on success, -1 on error.
+#include <string.h> // Ensure this is at the top of your file for strncpy
+
 int commit_create(const char *message, ObjectID *commit_id_out) {
-    // TODO: Implement commit creation
-    // (See Lab Appendix for logical steps)
-    (void)message; (void)commit_id_out;
-    return -1;
+    // 1. Get the Tree ObjectID
+    ObjectID tree_oid;
+    if (tree_from_index(&tree_oid) != 0) return -1;
+
+    // 2. Get Parent ObjectID
+    ObjectID parent_oid;
+    head_read(&parent_oid);
+
+    // 3. Setup the Commit struct
+    Commit c;
+    c.tree = tree_oid;     // Corrected name based on compiler hint
+    c.parent = parent_oid; // Corrected name based on compiler hint
+    c.timestamp = time(NULL);
+
+    // 4. Copy strings using strncpy instead of direct assignment
+    // This fixes the "assignment to expression with array type" error
+    strncpy(c.message, message, sizeof(c.message) - 1);
+    c.message[sizeof(c.message) - 1] = '\0'; // Ensure null termination
+
+    strncpy(c.author, pes_author(), sizeof(c.author) - 1);
+    c.author[sizeof(c.author) - 1] = '\0';
+
+    // 5. Serialize
+    void *buffer = NULL;
+    size_t len = 0;
+    if (commit_serialize(&c, &buffer, &len) != 0) return -1;
+
+    // 6. Save and Update
+    if (object_write(OBJ_COMMIT, buffer, len, commit_id_out) != 0) return -1;
+    head_update(commit_id_out);
+
+    return 0;
 }
