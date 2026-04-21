@@ -1,0 +1,3 @@
+Saved test artifacts: out_s01_test_objects.txt, out_s02_objects_shard.txt
+Details:\n
+Files changed: object.c, object.h (helpers)
