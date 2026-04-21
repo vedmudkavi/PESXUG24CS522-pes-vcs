@@ -1,0 +1,3 @@
+Documented index file format and commands to reproduce
+Details:\n
+Files changed: index.c, index.h
