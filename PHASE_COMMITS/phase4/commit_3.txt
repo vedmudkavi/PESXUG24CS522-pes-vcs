@@ -1,0 +1,3 @@
+Wrote commit objects to the object store and verified with ./pes commit
+Details:\n
+Files changed: commit.c, commit.h, tree.c, index.c
