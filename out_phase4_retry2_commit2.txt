@@ -1,0 +1,5 @@
+commit: found parent a1d53e47579eb7e409a9c540ce075acff152ea2c8227ae64359db6e4284c515c
+commit: serialized 252 bytes
+commit: wrote object 929ee053f582d27f8bfc95d006ae10e660e1115e64cead62986bca8ac821ca2d
+commit: head updated
+Committed: 929ee053f582... phase4: modify file2

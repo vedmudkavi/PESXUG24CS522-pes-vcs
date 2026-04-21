@@ -1,0 +1,5 @@
+commit: no parent
+commit: serialized 187 bytes
+commit: wrote object a1d53e47579eb7e409a9c540ce075acff152ea2c8227ae64359db6e4284c515c
+commit: head updated
+Committed: a1d53e47579e... phase4: try after tree impl
