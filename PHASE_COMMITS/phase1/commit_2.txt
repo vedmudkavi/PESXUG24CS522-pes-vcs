@@ -1,0 +1,3 @@
+Implemented object_read: integrity check, header parse, data extraction
+Details:\n
+Files changed: object.c, object.h (helpers)
