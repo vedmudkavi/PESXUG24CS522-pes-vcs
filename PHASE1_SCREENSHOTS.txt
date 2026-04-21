@@ -1,0 +1,3 @@
+Phase 1 screenshots:
+1A: out_s01_test_objects.txt
+1B: out_s02_objects_shard.txt
