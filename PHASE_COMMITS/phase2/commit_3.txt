@@ -1,0 +1,3 @@
+Linked test_tree with index.o and verified deterministic serialization (./test_tree)
+Details:\n
+Files changed: tree.c, tree.h
