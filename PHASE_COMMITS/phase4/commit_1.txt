@@ -1,0 +1,3 @@
+Implemented commit_create: build tree from index and serialize commit
+Details:\n
+Files changed: commit.c, commit.h, tree.c, index.c
