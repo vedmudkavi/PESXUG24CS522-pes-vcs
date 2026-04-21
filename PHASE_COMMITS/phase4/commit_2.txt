@@ -1,0 +1,3 @@
+Handled parent detection, author, timestamp, and atomic head_update
+Details:\n
+Files changed: commit.c, commit.h, tree.c, index.c
