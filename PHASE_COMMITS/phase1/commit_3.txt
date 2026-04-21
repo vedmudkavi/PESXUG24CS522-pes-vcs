@@ -1,0 +1,3 @@
+Added tests and verified blob deduplication and integrity (./test_objects)
+Details:\n
+Files changed: object.c, object.h (helpers)
