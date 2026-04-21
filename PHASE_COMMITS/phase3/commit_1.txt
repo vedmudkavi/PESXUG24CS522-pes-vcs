@@ -1,0 +1,3 @@
+Implemented index_load: read .pes/index text format into Index struct
+Details:\n
+Files changed: index.c, index.h
