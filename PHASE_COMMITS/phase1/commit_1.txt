@@ -1,0 +1,3 @@
+Implemented object_write: atomic temp+rename, header format, sharded paths
+Details:\n
+Files changed: object.c, object.h (helpers)
