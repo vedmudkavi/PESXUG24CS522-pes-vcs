@@ -1,0 +1,3 @@
+Documented tree format and serialization details
+Details:\n
+Files changed: tree.c, tree.h
