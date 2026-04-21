@@ -1,0 +1,3 @@
+Implemented index_add: hash file, write blob, update index entry and save
+Details:\n
+Files changed: index.c, index.h
