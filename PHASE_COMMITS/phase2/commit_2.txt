@@ -1,0 +1,3 @@
+Wrote logic to convert index entries to tree entries and write tree objects
+Details:\n
+Files changed: tree.c, tree.h
