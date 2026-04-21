@@ -1,0 +1,3 @@
+Implemented tree_serialize and tree_parse (provided) and tree_from_index (flat-root implementation)
+Details:\n
+Files changed: tree.c, tree.h
