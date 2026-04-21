@@ -1,0 +1,3 @@
+Ran integration tests (test_sequence.sh) to produce three commits and object growth
+Details:\n
+Files changed: commit.c, commit.h, tree.c, index.c
