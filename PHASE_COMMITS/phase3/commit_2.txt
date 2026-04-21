@@ -1,0 +1,3 @@
+Implemented index_save: atomic write, sorting by path, fsync before rename
+Details:\n
+Files changed: index.c, index.h
