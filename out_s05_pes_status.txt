@@ -1,0 +1,39 @@
+Staged changes:
+  staged:     file1.txt
+
+Unstaged changes:
+  (nothing to show)
+
+Untracked files:
+  untracked:  out_s03_objects_list.txt
+  untracked:  PHASE2_STATUS.txt
+  untracked:  tree.c
+  untracked:  index.h
+  untracked:  commit.h
+  untracked:  out_s05_pes_init.txt
+  untracked:  index.c
+  untracked:  out_s01_test_objects.txt
+  untracked:  file2.txt
+  untracked:  test_tree.c
+  untracked:  test_objects
+  untracked:  out_s02_objects_shard.txt
+  untracked:  Makefile
+  untracked:  tree.h
+  untracked:  PHASE2_TIMESTAMP.txt
+  untracked:  PHASE1_TIMESTAMP.txt
+  untracked:  .gitignore
+  untracked:  test_tree
+  untracked:  test_sequence.sh
+  untracked:  commit.c
+  untracked:  pes.h
+  untracked:  testfile.txt
+  untracked:  pes.c
+  untracked:  out_s05_pes_add.txt
+  untracked:  README.md
+  untracked:  out_s03_test_tree.txt
+  untracked:  object.c
+  untracked:  test_objects.c
+  untracked:  PHASE2_SCREENSHOTS.txt
+  untracked:  PHASE1_SCREENSHOTS.txt
+  untracked:  PHASE1_STATUS.txt
+
